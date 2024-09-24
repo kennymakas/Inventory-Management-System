@@ -5,7 +5,7 @@ const HeaderSection = () => {
       <header className="container mt-5 pt-4">
         <div className="row">
           <div className="col-md-4">
-            <div className="card">
+            <div className="card mb-2">
               <img src={ profilePicture } className="card-img-top" alt="..."/>
               <hr className="w-auto"/>
               <div className="p-2">
@@ -28,7 +28,7 @@ const HeaderSection = () => {
                 <iframe src="https://free.timeanddate.com/clock/i9k6af6b/n115/szw210/szh210/hocfff/hbw0/cf100/hnc33f/facfff/fdi76/mqcfff/mql10/mqw4/mqd98/mhcfff/mhl5/mhw4/mhd98/mmc000/mml10/mmw1/mmd98" frameborder="0" width="210" height="210"></iframe>
               </div>
               <div className="col-sm-4">
-                <div className="card">
+                <div className="card mb-2">
                   <div className="card-body">
                     <h5 className="card-title fw-bold">New Orders</h5>
                       <hr className="w-auto"/>
@@ -45,7 +45,7 @@ const HeaderSection = () => {
 
         <div className="my-1 border border-1 border-dark-subtle rounded p-2">
               <div className="row">
-                <div className="col-md-4">
+                <div className="col-md-4 mb-2">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title fw-bold"><i className="fa-solid fa-layer-group"></i> Categories</h5>
@@ -64,7 +64,7 @@ const HeaderSection = () => {
                   </div>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-4 mb-2">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title fw-bold"><i className="fa-brands fa-bandcamp"></i> Brands</h5>
@@ -83,7 +83,7 @@ const HeaderSection = () => {
                   </div>
                 </div>
 
-                <div className="col-md-4">
+                <div className="col-md-4 mb-2">
                   <div className="card">
                     <div className="card-body">
                       <h5 className="card-title fw-bold"><i className="fa-brands fa-product-hunt"></i> Products</h5>
