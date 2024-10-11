@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import profilePicture from '../assets/images/User.jpg'
 const HeaderSection = () => {
   return (
@@ -14,7 +15,7 @@ const HeaderSection = () => {
                 <p className="card-text fw-normal">Watuulo-Richard</p>
                 <p className="card-text">Admin</p>
                 <p className="card-text">Last Login : xxxx-xx-xx</p>
-                <a href="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-pen-to-square text-warning"></i> Edit Profile</a>
+                <Link to="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-pen-to-square text-warning"></i> Edit Profile</Link>
               </div>
             </div>
           </div>
@@ -35,7 +36,7 @@ const HeaderSection = () => {
                         <p className="card-text">
                           Here You Can Make Invoices And Create New Orders
                         </p>
-                        <a href="#" className="btn btn-sm btn-primary"><i className="fa-solid fa-cart-plus text-warning"></i> New Orders</a>
+                        <Link to="#" className="btn btn-sm btn-primary"><i className="fa-solid fa-cart-plus text-warning"></i> New Orders</Link>
                   </div> 
                 </div>
               </div>
@@ -55,10 +56,10 @@ const HeaderSection = () => {
                         Parent And Sub-Categories
                       </p>
                       <div>
-                        <a href="#" className="btn btn-sm btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</a>
+                        <Link to="#" className="btn btn-sm btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</Link>
                       </div>
                       <div>
-                        <a href="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-people-roof text-warning"></i> Manage Categories</a>
+                        <Link to="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-people-roof text-warning"></i> Manage Categories</Link>
                       </div>
                     </div>
                   </div>
@@ -74,10 +75,10 @@ const HeaderSection = () => {
                         Brand
                       </p>
                       <div>
-                        <a href="#" className="btn btn-sm btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</a>
+                        <Link to="#" className="btn btn-sm btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</Link>
                       </div>
                       <div>
-                        <a href="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-people-roof text-warning"></i> Manage Brands</a>
+                        <Link to="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-people-roof text-warning"></i> Manage Brands</Link>
                       </div>
                     </div>
                   </div>
@@ -93,10 +94,10 @@ const HeaderSection = () => {
                         Products
                       </p>
                       <div>
-                        <a href="#" className="btn btn-sm btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</a>
+                        <Link to="/products" className="btn btn-sm btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</Link>
                       </div>
                       <div>
-                        <a href="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-people-roof text-warning"></i> Manage Products</a>
+                        <Link to="/edit" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-people-roof text-warning"></i> Manage Products</Link>
                       </div>
                     </div>
                   </div>
