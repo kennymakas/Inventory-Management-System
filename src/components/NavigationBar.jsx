@@ -5,7 +5,7 @@ const NavigationBar = () => {
     <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
             <div className="container-fluid">
-                <Link className="navbar-brand btn btn-dark" to="#">
+                <Link className="navbar-brand btn btn-dark" to="/">
                     <div className="fw-bold">
                         <span className="text-white">
                             Inventory Management System

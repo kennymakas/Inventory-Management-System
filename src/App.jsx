@@ -1,12 +1,14 @@
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from 'react-router-dom'
 import ProductsPage from './pages/products/ProductsPage';
 import MainLayout from './layout/MainLayout';
-import HomePage from './pages/HomePage';
+import Dashboard from './pages/Dashboard';
+import LandingPage from './pages/LandingPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<MainLayout />}>
-      <Route index element = {<HomePage />}/>
+      <Route path='/dashboard' element= {<Dashboard />}/>
+      <Route index element = {<LandingPage />}/>
       <Route path='/products' element = {<ProductsPage />}/>
     </Route>
     
