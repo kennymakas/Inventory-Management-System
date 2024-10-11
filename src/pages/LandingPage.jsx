@@ -7,7 +7,7 @@ const LandingPage = () => {
         <div className='row'>
             <div className="col-md-6">
                 <h1>Product Inventory</h1>
-                <p className='my-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam reiciendis, harum nobis dicta facere autem perspiciatis repudiandae voluptatum impedit aut ut consectetur rerum, in voluptate modi doloremque mollitia aliquid nesciunt atque? Hic incidunt aut exercitationem, nemo quo, quaerat debitis dolorum perspiciatis quia natus accusamus odit totam alias fuga animi quod.</p>
+                <p className='my-3'>Our **Product Inventory System** simplifies stock management, providing real-time tracking, automated updates, and insightful reporting. Designed to optimize efficiency, it helps businesses monitor inventory levels, categorize products, and make data-driven decisions with ease and accuracy.</p>
 
                 <Link to="/dashboard" className='btn btn-primary btn-lg w-100 rounded-pill'>Get Started</Link>
             </div>
