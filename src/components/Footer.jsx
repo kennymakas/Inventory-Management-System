@@ -2,12 +2,12 @@
 
 const Footer = () => {
   return (
-    <footer className='footer bg-secondary py-5 text-white'>
+    <footer className='footer footer-bg bg-dark py-5 text-white position-relative'>
         <div className="container">
             <div className="row">
                 <div className="col-md-4 my-3">
                     <h4 className="text-center text-md-start fw-bold">About Product Inventory</h4>
-                    <p className="text-center text-md-start">Our Inventory Management System is designed to streamline your business operations by giving you full control over your stock in real-time. Whether you're managing hundreds of products or just a few, our system allows you to easily track inventory levels, categorize products, and monitor sales performance from a user-friendly interface.</p>
+                    <p className="text-center text-md-start">Our Inventory Management System is designed to streamline your business operations by giving you full control over your stock in real-time. Whether you're managing hundreds of products or just a few.</p>
                 </div>
                 <div className="col-md-4 my-3">
                     <h4 className="text-center text-md-start fw-bold">Links</h4>

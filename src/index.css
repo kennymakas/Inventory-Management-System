@@ -4,10 +4,16 @@
 @import '../node_modules/@fortawesome/fontawesome-free/css/brands.css';
 @import '../node_modules/@fortawesome/fontawesome-free/css/solid.css';
 
-img {
-    width: 225;
+.services {
+    background: url('../src/assets/images/LightBg.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
 }
 
-.cls-1 {
-    fill: #f3f6f9;
-  }
+/* .footer-bg {
+    background: url('../src/assets/images/DarkBgRich.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow: hidden;
+} */

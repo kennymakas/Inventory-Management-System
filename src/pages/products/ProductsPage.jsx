@@ -51,7 +51,7 @@ const ProductsPage = () => {
             {/* <!-- Button to trigger the modal --> */}
             <button
               type="button"
-              className="btn btn-outline-primary rounded-circle fw-bolder p-5"
+              className="btn btn-outline-primary rounded-pill fw-bolder p-3"
               data-bs-toggle="modal"
               data-bs-target="#productModal"
             >
@@ -194,17 +194,11 @@ const ProductsPage = () => {
           <div className="vr"></div>
         </div>
         <div className="col-md-6">
-            <img src={ mySVG } alt="..." className='img-fluid mx-auto' width={225} />
+            <img src={ mySVG } alt="..." className='img-fluid mx-auto w-100' />
         </div>
       </div>
       <hr />
 
-      <div className="row">
-        <div className="col-md-4 offset-md-4 text-center text-bg-primary rounded shadow-lg">
-          <h2 className='text-white'>Manage Your Products</h2>
-          
-        </div>
-      </div>
       <div className="row">
         <div className="col-md-6"></div>
         <div className="col-md-6"></div>
@@ -244,6 +238,14 @@ const ProductsPage = () => {
           }
         </tbody>
       </table>
+
+      <div className="row">
+        <div className="col-md-10 offset-md-1 text-center align-items-center">
+          <a href="" className='btn btn-outline-primary'>
+          <i className="fa-solid fa-house"></i> Back To Home Page
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
