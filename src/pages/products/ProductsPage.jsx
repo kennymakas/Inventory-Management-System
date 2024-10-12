@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import mySVG from '/src/assets/images/undraw_empty_cart_co35.svg'
+import inventWoman from '/src/assets/images/inventWoman.jpg'
 import { Link } from 'react-router-dom';
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -36,26 +36,22 @@ const ProductsPage = () => {
     e.preventDefault();
   }
   return (
-    <div className="container p-5">
+    <div className="container p-5 bg-light my-5">
         <div className="row">
-            <div className="col-md-10 offset-md-1 text-center mt-5">
-                <h2 className="fw-bold text-capitalize">
-                <i className="fa-regular fa-hand-point-down text-primary"></i> add an and save a new product to your store <i className="fa-regular fa-hand-point-down text-primary"></i>
-                </h2>
-                <hr />
-            </div>
-        </div>
-      <div className="row">
-        <div className="col-md-5">
-          <div className=" text-md-center mt-md-5 justify-content-center align-content-lg-center">
+          
+          {/* <!-- Text and Button Column --> */}
+          <div className="col-md-6">
+            <h1 className="display-5 fw-bold mb-3 text-primary">Create a New Product</h1>
+            <p className="lead mb-4">Easily add new products to your store with just a few clicks. Expand your inventory now and enhance your customers' shopping experience by offering them a wide range of products tailored to their needs. Stay ahead of the competition and grow your business today!</p>
+            <div className=" mt-md-5">
             {/* <!-- Button to trigger the modal --> */}
             <button
               type="button"
-              className="btn btn-outline-primary rounded-pill fw-bolder p-3"
+              className="btn btn-primary btn-lg w-100"
               data-bs-toggle="modal"
               data-bs-target="#productModal"
             >
-              Add Product
+               Create New Product <i className="fa-solid fa-square-plus"></i>
             </button>
 
             {/* <!-- Modal --> */}
@@ -188,15 +184,14 @@ const ProductsPage = () => {
               </div>
             </div>
           </div>
+            
+          </div>
+          {/* <!-- Image Column --> */}
+          <div className="col-md-6">
+            <img src={ inventWoman } className="img-fluid rounded-md shadow-lg w-100 " alt="Product Creation Image"/>
+          </div>
+
         </div>
-        {/* <!-- Vertical line --> */}
-        <div className="col-md-1 d-flex justify-content-center">
-          <div className="vr"></div>
-        </div>
-        <div className="col-md-6">
-            <img src={ mySVG } alt="..." className='img-fluid mx-auto w-100' />
-        </div>
-      </div>
       <hr />
 
       <div className="row">
