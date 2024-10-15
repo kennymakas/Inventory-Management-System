@@ -31,10 +31,10 @@ const HeaderSection = () => {
               <div className="col-sm-8">
                 <div className="card mx-2">
                   <div className="card-body">
-                    <h5 className="card-title fw-bold">New Orders</h5>
+                    <h5 className="card-title fw-bold">Reviews</h5>
                       <hr className="w-auto"/>
                         <p className="card-text">
-                          Here You Can Make Invoices And Create New Orders
+                          Here You Can Make Invoices And See Reports Of Your Stock
                         </p>
                         <Link to="#" className="btn btn-sm btn-primary"><i className="fa-solid fa-cart-plus text-warning"></i> New Orders</Link>
                   </div> 
@@ -50,10 +50,7 @@ const HeaderSection = () => {
                         Here You Can Manage Your Products And You Can Add New A Products
                       </p>
                       <div>
-                        <Link to="/products" className="btn btn-sm btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</Link>
-                      </div>
-                      <div>
-                        <Link to="/edit" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-people-roof text-warning"></i> Manage Products</Link>
+                        <Link to="/products" className="btn btn-lg btn-primary w-100 mb-2"><i className="fa-solid fa-circle-plus text-warning"></i> Add</Link>
                       </div>
                     </div>
                   </div>

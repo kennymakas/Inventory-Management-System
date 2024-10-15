@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import inventWoman from "/src/assets/images/inventWoman.jpg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -399,12 +399,33 @@ const productsData = {
   meta: { pagination: { page: 1, pageSize: 25, pageCount: 1, total: 5 } },
 };
 const ProductsPage = ({ addProductSubmit }) => {
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch('http://localhost:1337/api/products?populate=*');
+        const data = await res.json();
+        setProducts(data);
+      } catch (error) {
+        console.log('Error Fetching Data', error);
+      } finally {
+        setLoading(true)
+      }
+      
+    }
+
+    fetchProducts();
+  }, []);
+
   const [productName, setProductName] = useState("");
   const [productPrice, setProductPrice] = useState("");
   const [productCategory, setProductCategory] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productDate, setProductDate] = useState("");
-  const [productImage, setProductImage] = useState("");
+  // const [productImage, setProductImage] = useState("");
 
   const navigate = useNavigate();
 
@@ -445,7 +466,7 @@ const ProductsPage = ({ addProductSubmit }) => {
               data-bs-toggle="modal"
               data-bs-target="#productModal"
             >
-              Create New Product <i className="fa-solid fa-square-plus"></i>
+             <i className="fa-solid fa-circle-plus text-warning"></i> Create New Product
             </button>
 
             {/* <!-- Modal --> */}
@@ -563,6 +584,7 @@ const ProductsPage = ({ addProductSubmit }) => {
                       </div>
 
                       {/* <!-- Image --> */}
+                      
                       {/* <div className="mb-3">
                         <label htmlFor="productImage" className="form-label">
                           Product Image

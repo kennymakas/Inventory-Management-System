@@ -3,6 +3,7 @@ import ProductsPage from './pages/products/ProductsPage';
 import MainLayout from './layout/MainLayout';
 import Dashboard from './pages/Dashboard';
 import LandingPage from './pages/LandingPage';
+import NotFoundPage from './pages/products/NotFoundPage';
 
 // Add New Product
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
       <Route path='/' element={<MainLayout />}>
         <Route path='/dashboard' element= {<Dashboard />}/>
         <Route index element = {<LandingPage />}/>
+        <Route path='*' element = {<NotFoundPage />}/>
         <Route path='/products' element = {<ProductsPage addProductSubmit={newProduct} deleteProduct={ deleteProduct }/>}/>
       </Route>
       
