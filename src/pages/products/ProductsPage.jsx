@@ -425,7 +425,7 @@ const ProductsPage = ({ addProductSubmit }) => {
   const [productCategory, setProductCategory] = useState("");
   const [productDescription, setProductDescription] = useState("");
   const [productDate, setProductDate] = useState("");
-  // const [productImage, setProductImage] = useState("");
+  const [productImage, setProductImage] = useState("");
 
   const navigate = useNavigate();
 
@@ -588,7 +588,7 @@ const ProductsPage = ({ addProductSubmit }) => {
 
                       {/* <!-- Image --> */}
                       
-                      {/* <div className="mb-3">
+                      <div className="mb-3">
                         <label htmlFor="productImage" className="form-label">
                           Product Image
                         </label>
@@ -599,9 +599,9 @@ const ProductsPage = ({ addProductSubmit }) => {
                           accept="image/*"
                           required
                           value={productImage}
-                          onChange={(e) => setProductImage(e.target.files[0])}
+                          onChange={(e) => setProductImage(e.target.files[''])}
                         />
-                      </div> */}
+                      </div>
                     </form>
                   </div>
 
@@ -659,7 +659,7 @@ const ProductsPage = ({ addProductSubmit }) => {
                 <td>{product.brand}</td>
                 <td>{product.category}</td>
                 <td>{product.price}</td>
-                {/* <td><img src={ product.productImage.formats.large.url } alt="..." width="100" /></td> */}
+                <td><img src={ 'http://localhost:1337/api/products?populate=*' } alt="..." width="100" /></td>
                 <td>{product.createdAt.slice(0, 10)}</td>
                 <td style={{ width: "10px", whiteSpace: "nowrap" }}>
                   <Link
