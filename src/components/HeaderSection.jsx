@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import profilePicture from '../assets/images/User.jpg'
 const HeaderSection = () => {
   return (
-    <div>
+    <>
       <header className="container my-5 py-5">
         <div className="row">
           <div className="col-md-4">
@@ -62,7 +62,7 @@ const HeaderSection = () => {
         
 
       </header>
-    </div>
+    </>
   )
 }
 

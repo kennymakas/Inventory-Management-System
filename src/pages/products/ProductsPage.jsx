@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import inventWoman from "/src/assets/images/inventWoman.jpg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import Spinners from "../../components/Spinners";
 const productsData = {
   data: [
     {
@@ -412,7 +412,7 @@ const ProductsPage = ({ addProductSubmit }) => {
       } catch (error) {
         console.log('Error Fetching Data', error);
       } finally {
-        setLoading(true)
+        setTimeout(()=>{setLoading(false)}, 3000)
       }
       
     }
@@ -444,6 +444,9 @@ const ProductsPage = ({ addProductSubmit }) => {
 
     return navigate('/products')
   };
+  if(loading) {
+    return <Spinners loading={ loading }/>
+  }
   return (
     <div className="container p-5 bg-light my-5">
       <div className="row">
