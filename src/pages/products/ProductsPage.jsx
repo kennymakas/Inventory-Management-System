@@ -438,6 +438,7 @@ const ProductsPage = ({ addProductSubmit }) => {
       productCategory,
       productDescription,
       productDate,
+      productImage,
     };
 
     addProductSubmit(newProduct)
@@ -659,7 +660,7 @@ const ProductsPage = ({ addProductSubmit }) => {
                 <td>{product.brand}</td>
                 <td>{product.category}</td>
                 <td>{product.price}</td>
-                <td><img src={ 'http://localhost:1337/api/products?populate=*' } alt="..." width="100" /></td>
+                <td><img src={ product.productImage.formats.thumbnail.url } alt="..." width="100" /></td>
                 <td>{product.createdAt.slice(0, 10)}</td>
                 <td style={{ width: "10px", whiteSpace: "nowrap" }}>
                   <Link
