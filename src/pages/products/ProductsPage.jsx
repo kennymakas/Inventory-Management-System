@@ -42,7 +42,7 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [description, setDescription] = useState("");
-  const [productImage, setProductImage] = useState("");
+  const [productImage, setProductImage] = useState(null);
   console.log(productImage)
 
   

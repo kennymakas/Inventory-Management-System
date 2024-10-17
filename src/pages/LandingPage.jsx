@@ -1,8 +1,19 @@
 import Sparkle from '../assets/images/sparkles_6853977.svg'
 import inventImage from '../assets/images/inventImage.jpg'
 import { Link } from 'react-router-dom'
+import Spinners from '../components/Spinners'
+import { useState, useEffect } from 'react'
 
 const LandingPage = () => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(()=>{setLoading(false)}, 2000)
+      }, []);
+
+    if(loading) {
+        return <Spinners loading={ loading }/>
+      }
   return (
     <>
         <div className="my-5 py-5">
