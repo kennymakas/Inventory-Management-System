@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import LandingPage from "./pages/LandingPage";
 import NotFoundPage from "./pages/products/NotFoundPage";
 import { useState } from "react";
+import {useHistory} from 'react-router-dom'
 
 // Add New Product
 const App = () => {
@@ -50,10 +51,12 @@ const App = () => {
 
   // Delete Product
   const deleteProduct = async (id) => {
-    const res = await fetch(`http://localhost:1337/api/products/${id}`, {
+    const res = await fetch('http://localhost:1337/api/products/' + id, {
       method: "DELETE",
       mode: "cors",
-    });
+    }).then(() => {
+      history.push('/dashboard')
+    })
     console.log(res);
     return;
   };
