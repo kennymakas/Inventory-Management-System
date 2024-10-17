@@ -10,10 +10,11 @@ const HeaderSection = () => {
   // }
   const fetchUserProfile = async () => {
     try {
-      const res = await fetch('http://localhost:1337/api/users');
+      const res = await fetch('https://inventory-strapi-data.onrender.com/api/users');
       const data = await res.json();
       setProfile(data);
       console.log(data)
+      
     } catch (error) {
       console.log('Error Fetching Data', error);
     } 
