@@ -15,6 +15,9 @@ import { useState } from "react";
 
 // Add New Product
 const App = () => {
+  const [products, setProductsItems] = useState([]);
+  const [error, setError] = useState(null);
+
   const [productImage, setProductImage] = useState(null);
   const newProduct = async (addNewProduct) => {
     
@@ -52,14 +55,20 @@ const App = () => {
 
   // Delete Product
   const deleteProduct = async (id) => {
-    const res = await fetch('http://localhost:1337/api/products/' + id, {
-      method: "DELETE",
-      mode: "cors",
-    }).then(() => {
-      history.push('/dashboard')
-    })
-    console.log(res);
-    return;
+    try {
+      const res = await fetch(`http://localhost:1337/api/products/${id}`, {
+        method: "DELETE",
+        mode: "cors",
+      });
+      if(!Response.ok) {
+        throw new Error('Failed to delete item');
+      }
+      // Remove the deleted item from local state
+      setProductsItems(products.filter(product => product.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
+    
   };
 
   const router = createBrowserRouter(

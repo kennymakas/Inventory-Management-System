@@ -5,9 +5,6 @@ const HeaderSection = () => {
 
   const [profile, setProfile] = useState("");
 
-  // const fetchUserProfile = async () => {
-  //   const res = await fetchUser(profile)
-  // }
   const fetchUserProfile = async () => {
     try {
       const res = await fetch('https://inventory-strapi-data.onrender.com/api/users');
@@ -18,9 +15,6 @@ const HeaderSection = () => {
     } catch (error) {
       console.log('Error Fetching Data', error);
     } 
-    // finally {
-    //   setTimeout(()=>{setLoading(false)}, 2000)
-    // }
     
   }
 
@@ -40,7 +34,7 @@ const HeaderSection = () => {
                 <p className="card-text fw-normal">{ profile.username}</p>
                 <p className="card-text">{profile.email}</p>
                 <p className="card-text">Last Login : xxxx-xx-xx</p>
-                <Link to="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-pen-to-square text-warning"></i> Edit Profile</Link>
+                
               </div>
             </div>
           </div>
