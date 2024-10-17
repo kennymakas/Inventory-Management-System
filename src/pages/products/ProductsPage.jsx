@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import inventWoman from "/src/assets/images/inventWoman.jpg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Spinners from "../../components/Spinners";
 
-const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
+const ProductsPage = ({ addProductSubmit, deleteProduct, productImage, setProductImage }) => {
   const navigate = useNavigate();
 
   const onDeleteClick = (productId) => {
@@ -42,7 +43,7 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [description, setDescription] = useState("");
-  const [productImage, setProductImage] = useState("");
+  // const [productImage, setProductImage] = useState(null);
   console.log(productImage)
 
   
@@ -57,20 +58,9 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
       description,
       brand,
       productImage,
-      
     };
-
-    // const newProduct = new FormData();
-    // newProduct.append("productImage", productImage); // Append the image
-    // newProduct.append("name", name);     // Append the title
-    // newProduct.append("category", category);
-    // newProduct.append("description", description);
-    // newProduct.append("brand", brand);
-    // newProduct.append("price", price);
     
-
     addProductSubmit(newProduct)
-    
 
     return navigate('/products')
   };
