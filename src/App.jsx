@@ -15,37 +15,46 @@ import { useState } from "react";
 const App = () => {
   const [productImage, setProductImage] = useState(null);
   const newProduct = async (addNewProduct) => {
-    // const res = await fetch("http://localhost:1337/api/products/upload", {
-    const formData =  new FormData()
-    formData.append('files', productImage[0])
-    formData.append('data', JSON.stringify({
-      name: addNewProduct.name,
-      category: addNewProduct.category,
-      description: addNewProduct.description,
-      brand: addNewProduct.brand,
-      price: addNewProduct.price,
-
-    }));
-    const res = await fetch("http://localhost:1337/api/products", {
+    
+    const formData = new FormData();
+    formData.append("files", productImage);
+    
+    const res = await fetch("http://localhost:1337/api/upload", {
       method: "POST",
       // headers: { "Content-Type": "application/json" },
       // body: JSON.stringify({ data: addNewProduct }),
       body: formData,
-      
-      mode: "cors"
+
+      mode: "cors",
     });
-    let imageId = res.data[0].id
-    console.log(res.json());
-    return;
+    let data = await res.json();
+    let imageId = data[0].id;
+    console.log(data);
+
+    const productsData = await fetch("http://localhost:1337/api/products", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ data: {
+        name: addNewProduct.name,
+        price: addNewProduct.price,
+        category: addNewProduct.category,
+        description: addNewProduct.description,
+        brand: addNewProduct.brand,
+        productImage: imageId
+      } }),
+    });
+
+    let products = await productsData.json()
+    console.log(products)
   };
 
   // Delete Product
   const deleteProduct = async (id) => {
     const res = await fetch(`http://localhost:1337/api/products/${id}`, {
       method: "DELETE",
-      mode: "cors"
+      mode: "cors",
     });
-    console.log(res)
+    console.log(res);
     return;
   };
 
@@ -61,6 +70,8 @@ const App = () => {
             <ProductsPage
               addProductSubmit={newProduct}
               deleteProduct={deleteProduct}
+              setProductImage={setProductImage}
+              productImage={productImage}
             />
           }
         />

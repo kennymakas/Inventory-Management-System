@@ -1,20 +1,21 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import inventWoman from "/src/assets/images/inventWoman.jpg";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Spinners from "../../components/Spinners";
 
-const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
+const ProductsPage = ({ addProductSubmit, deleteProduct, productImage, setProductImage }) => {
   const navigate = useNavigate();
 
-  const onDeleteClick = (productId) => {
-    const confirm = window.confirm('Are You Sure You Want To Delete This Product ?')
+  // const onDeleteClick = (productId) => {
+  //   const confirm = window.confirm('Are You Sure You Want To Delete This Product ?')
 
-    if(!confirm) return;
+  //   if(!confirm) return;
 
-    deleteProduct(productId);
-    navigate('/products');
-  }
+  //   deleteProduct(productId);
+  //   navigate('/products');
+  // }
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,7 +43,7 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [description, setDescription] = useState("");
-  const [productImage, setProductImage] = useState(null);
+  // const [productImage, setProductImage] = useState(null);
   console.log(productImage)
 
   
@@ -57,7 +58,6 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
       description,
       brand,
       productImage,
-      
     };
 
     // const newProduct = new FormData();
@@ -300,7 +300,7 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
                     Edit
                   </Link>
                   <button
-                    onClick={() => onDeleteClick(product.id)}
+                    onClick={() => deleteProduct(product.id)}
                     className="btn btn-danger btn-sm mx-1"
                   >
                     Delete
