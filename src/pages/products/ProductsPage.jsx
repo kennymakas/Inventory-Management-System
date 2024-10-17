@@ -8,14 +8,14 @@ import Spinners from "../../components/Spinners";
 const ProductsPage = ({ addProductSubmit, deleteProduct, productImage, setProductImage }) => {
   const navigate = useNavigate();
 
-  // const onDeleteClick = (productId) => {
-  //   const confirm = window.confirm('Are You Sure You Want To Delete This Product ?')
+  const onDeleteClick = (productId) => {
+    const confirm = window.confirm('Are You Sure You Want To Delete This Product ?')
 
-  //   if(!confirm) return;
+    if(!confirm) return;
 
-  //   deleteProduct(productId);
-  //   navigate('/products');
-  // }
+    deleteProduct(productId);
+    navigate('/products');
+  }
 
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -59,18 +59,8 @@ const ProductsPage = ({ addProductSubmit, deleteProduct, productImage, setProduc
       brand,
       productImage,
     };
-
-    // const newProduct = new FormData();
-    // newProduct.append("productImage", productImage); // Append the image
-    // newProduct.append("name", name);     // Append the title
-    // newProduct.append("category", category);
-    // newProduct.append("description", description);
-    // newProduct.append("brand", brand);
-    // newProduct.append("price", price);
     
-
     addProductSubmit(newProduct)
-    
 
     return navigate('/products')
   };
@@ -300,7 +290,7 @@ const ProductsPage = ({ addProductSubmit, deleteProduct, productImage, setProduc
                     Edit
                   </Link>
                   <button
-                    onClick={() => deleteProduct(product.id)}
+                    onClick={() => onDeleteClick(product.id)}
                     className="btn btn-danger btn-sm mx-1"
                   >
                     Delete
