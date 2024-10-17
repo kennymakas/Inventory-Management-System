@@ -9,6 +9,8 @@ import MainLayout from "./layout/MainLayout";
 import Dashboard from "./pages/Dashboard";
 import LandingPage from "./pages/LandingPage";
 import NotFoundPage from "./pages/products/NotFoundPage";
+import UserLogin from "./components/UserLogin";
+import UserRegistration from "./components/UserRegistration";
 import { useState } from "react";
 
 // Add New Product
@@ -62,6 +64,8 @@ const App = () => {
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<UserLogin />} />
+        <Route path="/register" element={<UserRegistration/>} />
         <Route index element={<LandingPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route

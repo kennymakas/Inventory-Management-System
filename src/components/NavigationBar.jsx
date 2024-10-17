@@ -17,20 +17,23 @@ const NavigationBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link btn btn-dark" aria-current="page" to="#">
-                                <span className="text-white fw-bold text-decoration-underline">
-                                 Login <i className="fas fa-sign-in-alt text-warning"></i>
-                                </span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link btn btn-dark" to="#">
+
+                    <li className="nav-item">
+                            <Link className="nav-link btn btn-dark" to="/register">
                                 <span className='text-white fw-bold'>
                                     Sign-Up <i className="fas fa-user-plus text-decoration-none text-warning"></i>
                                 </span>            
                             </Link>
                         </li>
+                        
+                        <li className="nav-item">
+                            <Link className="nav-link btn btn-dark" aria-current="page" to="/login">
+                                <span className="text-white fw-bold text-decoration-underline">
+                                 Login <i className="fas fa-sign-in-alt text-warning"></i>
+                                </span>
+                            </Link>
+                        </li>
+                        
                         
                     </ul>
                 </div>
