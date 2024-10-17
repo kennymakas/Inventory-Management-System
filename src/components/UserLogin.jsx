@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate} from "react-router-dom";
+import { Link } from "react-router-dom"
 import { loginUser } from '../Api';
 
 const UserLogin = () => {
@@ -66,6 +67,8 @@ const UserLogin = () => {
             <button className="btn btn-primary" type="submit">
               Login
             </button>
+
+            <h5>Don't have an account? <Link to="/register">Register</Link> here</h5>
         </form>
       </div>
     </div>
