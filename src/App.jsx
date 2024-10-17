@@ -12,7 +12,6 @@ import NotFoundPage from "./pages/products/NotFoundPage";
 import UserLogin from "./components/UserLogin";
 import UserRegistration from "./components/UserRegistration";
 import { useState } from "react";
-import {useHistory} from 'react-router-dom'
 
 // Add New Product
 const App = () => {

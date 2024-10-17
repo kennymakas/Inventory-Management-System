@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useNavigate} from "react-router-dom";
 import { loginUser } from '../Api';
 
@@ -31,15 +31,15 @@ const UserLogin = () => {
       <div className="container min-vh-100 d-flex justify-content-center align-items-center">
         <form onSubmit={handleSubmit}>
           <h3>Please login here</h3>
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="formGroupExampleInput" className="form-label">
             Email
             </label>
             <input
               type="text"
               name="email"
               value={email}
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput"
               placeholder="Enter Username or email"
               onChange={(e)=>setEmail(e.target.value)}
@@ -47,15 +47,15 @@ const UserLogin = () => {
             />
           </div>
           
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="formGroupExampleInput2" className="form-label">
               Password
             </label>
             <input
               name="password"
               value={password}
               type="password"
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput2"
               placeholder="Enter your password"
               onChange={(e)=>setPassword(e.target.value)}
@@ -63,7 +63,7 @@ const UserLogin = () => {
             />
           </div>
         
-            <button class="btn btn-primary" type="submit">
+            <button className="btn btn-primary" type="submit">
               Login
             </button>
         </form>

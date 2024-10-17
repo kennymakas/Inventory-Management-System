@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../Api";
-import HeaderSection from "./HeaderSection";
 
 
 const UserRegistration = () => {
@@ -31,30 +30,30 @@ const UserRegistration = () => {
       <div className="container min-vh-100 d-flex justify-content-center align-items-center">
         <form onSubmit={handleSubmit}>
           <h3>Please sign up here</h3>
-          <div class="mb-3">
-            <label for="formGroupExampleInput" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="formGroupExampleInput" className="form-label">
               Username
             </label>
             <input
               type="text"
               name="username"
               value={username}
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput"
               placeholder="Enter Username"
               onChange={(e)=>setUsername(e.target.value)}
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="formGroupExampleInput2" className="form-label">
               Email
             </label>
             <input
               name="email"
               value={email}
               type="email"
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput2"
               placeholder="Enter your email"
               onChange={(e)=>setEmail(e.target.value)}
@@ -62,15 +61,15 @@ const UserRegistration = () => {
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">
+          <div className="mb-3">
+            <label htmlFor="formGroupExampleInput2" className="form-label">
               Password
             </label>
             <input
               name="password"
               value={password}
               type="password"
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput2"
               placeholder="Enter your password"
               onChange={(e)=>setPassword(e.target.value)}
@@ -78,7 +77,7 @@ const UserRegistration = () => {
             />
           </div>
         
-            <button class="btn btn-primary" type="submit">
+            <button className="btn btn-primary" type="submit">
               Register
             </button>
         </form>
