@@ -4,6 +4,7 @@ import inventImage from '../assets/images/inventImage.jpg'
 import { Link } from 'react-router-dom'
 import Spinners from '../components/Spinners'
 import { useState, useEffect } from 'react'
+import { Spring } from 'react-spring'
 
 const LandingPage = () => {
     const [loading, setLoading] = useState(true);
@@ -16,21 +17,33 @@ const LandingPage = () => {
         return <Spinners loading={ loading }/>
       }
   return (
+    
     <>
         <div className="my-5 py-5">
-            <div className="container">
-                <div className='row'>
-                    <div className="col-md-6">
-                        <h1 className='text-primary fw-bold'>Product Inventory</h1>
-                        <p className='my-3 text-capitalize text-muted'>Our Product Inventory System simplifies stock management, providing real-time tracking, automated updates, and insightful reporting. Designed to optimize efficiency, it helps businesses monitor inventory levels, categorize products, and make data-driven decisions with ease and accuracy.</p>
+            <Spring 
+                from={{ opacity: 0, marginTop: -500 }}
+                to={{ opacity: 1, marginTop: 0 }}
+                config={{ delay:4000, duration:1000 }}
+            >
+                { props => (
+                    <div style={props}>
+                        <div className="container">
+                            <div className='row'>
+                                <div className="col-md-6">
+                                    <h1 className='text-primary fw-bold'>Product Inventory</h1>
+                                    <p className='my-3 text-capitalize text-muted'>Our Product Inventory System simplifies stock management, providing real-time tracking, automated updates, and insightful reporting. Designed to optimize efficiency, it helps businesses monitor inventory levels, categorize products, and make data-driven decisions with ease and accuracy.</p>
 
-                        <Link to="/dashboard" className='btn btn-primary btn-lg w-100 rounded-pill'>Get Started</Link>
+                                    <Link to="/login" className='btn btn-primary btn-lg w-100 rounded-pill'>Get Started</Link>
+                                </div>
+                                <div className="col-md-6">
+                                    <img src={ inventImage } alt="" className='w-100 img-fluid rounded' />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="col-md-6">
-                        <img src={ inventImage } alt="" className='w-100 img-fluid rounded' />
-                    </div>
-                </div>
-            </div>
+                ) }
+            </Spring>
+            
         
             <section className="icons bg-light rounded p-5">
                 <div className="row">

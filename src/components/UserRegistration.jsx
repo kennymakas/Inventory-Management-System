@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../Api";
+import { Link } from "react-router-dom";
 
 
 const UserRegistration = () => {
@@ -80,6 +81,9 @@ const UserRegistration = () => {
             <button className="btn btn-primary" type="submit">
               Register
             </button>
+            <Link to='/login' className='btn btn-primary px-4 mx-2'>
+              <i className="fas fa-sign-in-alt text-warning"></i>
+            </Link>
         </form>
       </div>
       

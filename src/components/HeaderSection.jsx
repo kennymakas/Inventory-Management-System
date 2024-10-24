@@ -55,7 +55,7 @@ const HeaderSection = () => {
                         <p className="card-text">
                           Here You Can Make Invoices And See Reports Of Your Stock
                         </p>
-                        <Link to="#" className="btn btn-sm btn-primary"><i className="fa-solid fa-cart-plus text-warning"></i> New Orders</Link>
+                        <Link to="#" className="btn btn-sm btn-primary w-100"><i className="fa-solid fa-cart-plus text-warning"></i> View Report</Link>
                   </div> 
                 </div>
               </div>

@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useNavigate} from "react-router-dom";
 import { loginUser } from '../Api';
+import imagePicture from '../assets/images/Login 2.avif'
+import { Link } from 'react-router-dom';
 
 const UserLogin = () => {
 
@@ -26,15 +28,16 @@ const UserLogin = () => {
         
     }
   return (
-    <div>
-     
-      <div className="container min-vh-100 d-flex justify-content-center align-items-center">
-        <form onSubmit={handleSubmit}>
-          <h3>Please login here</h3>
-          <div className="mb-3">
-            <label htmlFor="formGroupExampleInput" className="form-label">
+    <>
+     <div className="container my-5 py-5">
+      <div className="row">
+          <div className="col-md-6">
+            <form onSubmit={handleSubmit} className=''>
+              <h3 className='text-uppercase fs-2 text-primary fw-bold'>Please login here</h3>
+              <div className="mb-3">
+              <label htmlFor="formGroupExampleInput" className="form-label">
             Email
-            </label>
+              </label>
             <input
               type="text"
               name="email"
@@ -45,9 +48,9 @@ const UserLogin = () => {
               onChange={(e)=>setEmail(e.target.value)}
               required
             />
-          </div>
+              </div>
           
-          <div className="mb-3">
+              <div className="mb-3">
             <label htmlFor="formGroupExampleInput2" className="form-label">
               Password
             </label>
@@ -61,14 +64,25 @@ const UserLogin = () => {
               onChange={(e)=>setPassword(e.target.value)}
               required
             />
-          </div>
+              </div>
         
             <button className="btn btn-primary" type="submit">
               Login
             </button>
-        </form>
+            <Link to='/register' className="btn btn-outline-primary mx-3" type="submit">
+              Sign-Up
+            </Link>
+            </form>
+          </div>
+          <div className="col-md-6 align-items-center">
+            <img src={ imagePicture } alt="..." className='w-50 rounded'/>
+          </div>
       </div>
-    </div>
+     </div>
+      {/* <div className="container min-vh-100 d-flex justify-content-center align-items-center">
+        
+      </div> */}
+    </>
   )
 }
 
