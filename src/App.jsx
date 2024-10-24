@@ -65,7 +65,7 @@ const App = () => {
       localStorage.setItem("products", JSON.stringify(updatedProducts));
   
       // 3. Send new product to the backend
-      const res = await fetch('http://localhost:1337/api/products', {
+      const res = await fetch('https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +91,7 @@ const App = () => {
   // Delete Product
   const deleteProduct = async (id) => {
     try {
-      const res = await fetch(`http://localhost:1337/api/products/${id}`, {
+      const res = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*${id}`, {
         method: "DELETE",
         mode: "cors",
       });

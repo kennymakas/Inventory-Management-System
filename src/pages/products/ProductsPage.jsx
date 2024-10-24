@@ -35,7 +35,7 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
         } else {
           // Fetch from API if not found in localStorage
           const res = await fetch(
-            "http://localhost:1337/api/products?populate=*"
+            "https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*"
           );
           const data = await res.json();
           const productData = data.data || [];
