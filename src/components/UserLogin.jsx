@@ -3,7 +3,6 @@ import { useNavigate} from "react-router-dom";
 import { Link } from "react-router-dom"
 import { loginUser } from '../Api';
 import imagePicture from '../assets/images/Login 2.avif'
-import { Link } from 'react-router-dom';
 
 const UserLogin = () => {
 
@@ -56,8 +55,14 @@ const UserLogin = () => {
                 <button className="btn btn-primary" type="submit">
                   Login
                 </button>
+                <Link to='/register' className="btn btn-outline-primary mx-3" type="submit">
+                  Sign-Up
+                </Link>
               </form>
             </div>
+            <div className="col-md-6 align-items-center">
+              <img src={ imagePicture } alt="..." className='w-50 rounded'/>
+          </div>
         </div>
       </div>
     </>
