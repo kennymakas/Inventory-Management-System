@@ -4,7 +4,7 @@ import inventWoman from "/src/assets/images/inventWoman.jpg";
 import Spinners from "../../components/Spinners";
 
 
-const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
+const ProductsPage = ({ deleteProduct }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingProduct, setEditingProduct] = useState(null);
@@ -85,6 +85,31 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
     localStorage.setItem("products", JSON.stringify(updatedProducts));
     setEditingProduct(null); // Close the editing form
   };
+
+  const addProductSubmit = async () => {
+    const productsData = {
+      name: name,
+      price:price,
+      category: category,
+      brand: brand,
+      description: description,
+      quantity: quantity
+    }
+    try {
+          await fetch ('https://inventorymanagement-systemwithstrapi.onrender.com/api/products', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ data: productsData }),
+      }
+    );
+    console.log('product')
+
+    } catch (error) {
+      console.error('product not submitted', error)
+    }
+  }
 
   const onDeleteClick = (productId) => {
     const confirm = window.confirm(
@@ -227,7 +252,7 @@ const ProductsPage = ({ addProductSubmit, deleteProduct }) => {
               ></textarea>
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary mb-3">
               {editingProduct ? "Update Product" : "Create Product"}
             </button>
             {editingProduct && (

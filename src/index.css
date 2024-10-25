@@ -10,3 +10,10 @@
     background-attachment: fixed;
     overflow: hidden;
 }
+
+.map iframe {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 400px;
+}

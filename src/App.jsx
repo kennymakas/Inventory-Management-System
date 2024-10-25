@@ -54,38 +54,39 @@ const App = () => {
   //   console.log(products)
   // };
 
-  const addProduct = async (addNewProduct) => {
-    try {
-      // 1. Get products from local storage
-      const storedProducts = localStorage.getItem("products");
-      const products = storedProducts ? JSON.parse(storedProducts) : [];
+  // const addProduct = async (addNewProduct) => {
+  //   try {
+  //     // 1. Get products from local storage
+  //     const storedProducts = localStorage.getItem("products");
+  //     const products = storedProducts ? JSON.parse(storedProducts) : [];
   
-      // 2. Add new product to local storage
-      const updatedProducts = [...products, addNewProduct];
-      localStorage.setItem("products", JSON.stringify(updatedProducts));
+  //     // 2. Add new product to local storage
+  //     const updatedProducts = [...products, addNewProduct];
+  //     localStorage.setItem("products", JSON.stringify(updatedProducts));
   
-      // 3. Send new product to the backend
-      const res = await fetch('https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(addNewProduct),
-      });
+  //     // 3. Send new product to the backend
+  //     const res = await fetch('https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ data: addNewProduct }),
+  //       // body: JSON.stringify(addNewProduct),
+  //     });
   
-      // Check if the response status is OK (status code 200-299)
-      if (!res.ok) {
-        throw new Error(`Failed to add product to backend: ${res.statusText}`);
-      }
+  //     // Check if the response status is OK (status code 200-299)
+  //     if (!res.ok) {
+  //       throw new Error(`Failed to add product to backend: ${res.statusText}`);
+  //     }
   
-      const data = await res.json(); // Parse the response data
-      console.log('Product added successfully to backend:', data);
+  //     const data = await res.json(); // Parse the response data
+  //     console.log('Product added successfully to backend:', data);
   
-      return data; // Return the data from the backend (could be used in your app)
-    } catch (error) {
-      console.error('Error adding product:', error);
-    }
-  };
+  //     return data; // Return the data from the backend (could be used in your app)
+  //   } catch (error) {
+  //     console.error('Error adding product:', error);
+  //   }
+  // };
   
 
   // Delete Product
@@ -100,8 +101,8 @@ const App = () => {
       }
       // Remove the deleted item from local state
       setProductsItems(products.filter(product => product.id !== id));
-    } catch (err) {
-      setError(err.message);
+    } catch (error) {
+      setError(error.message);
     }
     
   };
@@ -118,12 +119,7 @@ const App = () => {
         <Route
           path="/products"
           element={
-            <ProductsPage
-              addProductSubmit={addProduct}
-              deleteProduct={deleteProduct}
-              // setProductImage={setProductImage}
-              // productImage={productImage}
-            />
+            <ProductsPage deleteProduct={deleteProduct}/>
           }
         />
       </Route>

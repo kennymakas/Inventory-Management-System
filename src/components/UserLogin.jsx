@@ -61,7 +61,7 @@ const UserLogin = () => {
               </form>
             </div>
             <div className="col-md-6 align-items-center">
-              <img src={ imagePicture } alt="..." className='w-50 rounded'/>
+              <img src={ imagePicture } alt="..." className='d-none d-md-block w-50 rounded'/>
           </div>
         </div>
       </div>
