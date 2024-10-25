@@ -13,6 +13,7 @@ import UserLogin from "./components/UserLogin";
 import UserRegistration from "./components/UserRegistration";
 import { useState } from "react";
 import ContactPage from "./pages/ContactPage";
+import CreateProduct from "./pages/products/CreateProduct";
 
 // Add New Product
 const App = () => {
@@ -65,7 +66,7 @@ const App = () => {
       localStorage.setItem("products", JSON.stringify(updatedProducts));
   
       // 3. Send new product to the backend
-      const res = await fetch('https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*', {
+      const res = await fetch('https://inventorymanagement-systemwithstrapi.onrender.com/api/products', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +92,7 @@ const App = () => {
   // Delete Product
   const deleteProduct = async (id) => {
     try {
-      const res = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*${id}`, {
+      const res = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/{id}`, {
         method: "DELETE",
         mode: "cors",
       });
@@ -115,6 +116,7 @@ const App = () => {
         <Route index element={<LandingPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/createproduct" element={<CreateProduct />} />
         <Route
           path="/products"
           element={
