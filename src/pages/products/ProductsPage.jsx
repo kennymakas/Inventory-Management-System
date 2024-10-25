@@ -28,21 +28,17 @@ const ProductsPage = ({ deleteProduct }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const storedProducts = localStorage.getItem("products");
-
-        if (storedProducts) {
-          setProducts(JSON.parse(storedProducts));
-        } else {
+        
           // Fetch from API if not found in localStorage
           const res = await fetch(
-            "https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*"
+            "https://inventorymanagement-systemwithstrapi.onrender.com/api/products"
           );
           const data = await res.json();
           const productData = data.data || [];
 
           setProducts(productData);
           localStorage.setItem("products", JSON.stringify(productData));
-        }
+        
       } catch (error) {
         console.log("Error Fetching Data", error);
       } finally {
@@ -53,6 +49,32 @@ const ProductsPage = ({ deleteProduct }) => {
     };
     fetchProducts();
   }, []);
+
+  const addProductSubmit = async(e)=>{
+    e.preventDefault();
+    const productData ={
+    name,price,category,brand,description,quantity 
+    }
+
+    try {
+        const response = await fetch("https://inventorymanagement-systemwithstrapi.onrender.com/api/products",{
+           method: "POST",
+           headers : {
+            "Content-Type":"application/json",
+
+           },
+           body:JSON.stringify({data:productData})
+        })
+
+        if(response.ok){
+            const result = await response.json();
+            alert("product created")
+            console.log("result", result)
+        }
+    } catch (error) {
+        console.error("Error placing order", error)
+    }
+}
 
   const handleEdit = (product) => {
     setEditingProduct(product);
@@ -86,30 +108,6 @@ const ProductsPage = ({ deleteProduct }) => {
     setEditingProduct(null); // Close the editing form
   };
 
-  const addProductSubmit = async () => {
-    const productsData = {
-      name: name,
-      price:price,
-      category: category,
-      brand: brand,
-      description: description,
-      quantity: quantity
-    }
-    try {
-          await fetch ('https://inventorymanagement-systemwithstrapi.onrender.com/api/products', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ data: productsData }),
-      }
-    );
-    console.log('product')
-
-    } catch (error) {
-      console.error('product not submitted', error)
-    }
-  }
 
   const onDeleteClick = (productId) => {
     const confirm = window.confirm(

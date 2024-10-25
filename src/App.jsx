@@ -19,80 +19,10 @@ const App = () => {
   const [products, setProductsItems] = useState([]);
   const [error, setError] = useState(null);
 
-  // const [productImage, setProductImage] = useState(null);
-  // const newProduct = async (addNewProduct) => {
-    
-  //   const formData = new FormData();
-  //   formData.append("files", productImage);
-    
-  //   const res = await fetch("http://localhost:1337/api/upload", {
-  //     method: "POST",
-  //     // headers: { "Content-Type": "application/json" },
-  //     // body: JSON.stringify({ data: addNewProduct }),
-  //     body: formData,
-
-  //     mode: "cors",
-  //   });
-  //   let data = await res.json();
-  //   let imageId = data[0].id;
-  //   console.log(data);
-
-  //   const productsData = await fetch("http://localhost:1337/api/products", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ data: {
-  //       name: addNewProduct.name,
-  //       price: addNewProduct.price,
-  //       category: addNewProduct.category,
-  //       description: addNewProduct.description,
-  //       brand: addNewProduct.brand,
-  //       productImage: imageId
-  //     } }),
-  //   });
-
-  //   let products = await productsData.json()
-  //   console.log(products)
-  // };
-
-  // const addProduct = async (addNewProduct) => {
-  //   try {
-  //     // 1. Get products from local storage
-  //     const storedProducts = localStorage.getItem("products");
-  //     const products = storedProducts ? JSON.parse(storedProducts) : [];
-  
-  //     // 2. Add new product to local storage
-  //     const updatedProducts = [...products, addNewProduct];
-  //     localStorage.setItem("products", JSON.stringify(updatedProducts));
-  
-  //     // 3. Send new product to the backend
-  //     const res = await fetch('https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ data: addNewProduct }),
-  //       // body: JSON.stringify(addNewProduct),
-  //     });
-  
-  //     // Check if the response status is OK (status code 200-299)
-  //     if (!res.ok) {
-  //       throw new Error(`Failed to add product to backend: ${res.statusText}`);
-  //     }
-  
-  //     const data = await res.json(); // Parse the response data
-  //     console.log('Product added successfully to backend:', data);
-  
-  //     return data; // Return the data from the backend (could be used in your app)
-  //   } catch (error) {
-  //     console.error('Error adding product:', error);
-  //   }
-  // };
-  
-
   // Delete Product
   const deleteProduct = async (id) => {
     try {
-      const res = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/?populate=*${id}`, {
+      const res = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/{id}`, {
         method: "DELETE",
         mode: "cors",
       });

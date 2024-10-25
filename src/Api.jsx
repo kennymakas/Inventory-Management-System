@@ -1,6 +1,9 @@
 import axios from "axios"
 
-const API_URL = 'https://inventorymanagement-systemwithstrapi.onrender.com/api/products'
+
+const API_URL = 'https://inventorymanagement-systemwithstrapi.onrender.com'
+
+
 
 //register a new user
 
@@ -34,6 +37,18 @@ export const loginUser = async (loginData) => {
         
     } catch (error) {
         console.error("Error during user login", error)
+        
+    }
+}
+
+//create a product
+export const createProduct = async (productData) => {
+    try {
+        const response = await axios.post(`${API_URL}/api/products`, productData)
+        return response.data
+        
+    } catch (error) {
+        console.error("Error during product creation", error)
         
     }
 }
