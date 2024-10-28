@@ -2,9 +2,12 @@
 import { useState, useEffect } from "react";
 import inventWoman from "/src/assets/images/inventWoman.jpg";
 import Spinners from "../../components/Spinners";
+// import { useNavigate } from 'react-router-dom';
 
 
-const ProductsPage = ({ deleteProduct }) => {
+
+const ProductsPage = () => {
+  // const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingProduct, setEditingProduct] = useState(null);
@@ -57,7 +60,7 @@ const ProductsPage = ({ deleteProduct }) => {
     }
 
     try {
-        const response = await fetch("https://inventorymanagement-systemwithstrapi.onrender.com/api/products",{
+        const response = await fetch("https://inventorymanagement-systemwithstrapi.onrender.com/api/products", {
            method: "POST",
            headers : {
             "Content-Type":"application/json",
@@ -71,7 +74,9 @@ const ProductsPage = ({ deleteProduct }) => {
             alert("product created")
             console.log("result", result)
         }
-    } catch (error) {
+    } 
+    
+    catch (error) {
         console.error("Error placing order", error)
     }
 }
@@ -108,21 +113,49 @@ const ProductsPage = ({ deleteProduct }) => {
     setEditingProduct(null); // Close the editing form
   };
 
+  // Delete Product 
+  const deleteProduct = async (id) => {
+    try {
+      const deleteRes = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/${id}`, {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Authorization": "7f977e153287cbd660b179f27403a807d761cb760506a50ba97a5460e3c46deb58f3bbd23daabd8697af10c70c871472376c08a3ac27079242fa4063ba9d36ab5f52ab197b154262e43dc667e927af2b824feb67570f049d12b507bcde12aefcf46c0279491f8aa2c426d142bf720646aabcd8103aa39cd2fbf73f7d92084ebc", // Replace with actual token
 
+          "Content-Type": "application/json",
+        },
+
+        body: JSON.stringify({
+          identifier: "Watuulo Richard",  // Replace with your Strapi username
+          password: "Watuulorichardb54f20#",    // Replace with your Strapi password
+        }),
+      });
+  
+      if (deleteRes.status === 404) {
+        console.error(`Product with ID ${id} does not exist.`);
+        return;
+      }
+  
+      if (!deleteRes.ok) {
+        throw new Error(`Failed to delete product with ID ${id}: ${deleteRes.statusText}`);
+      }
+  
+      console.log(`Product with ID ${id} deleted successfully.`);
+  
+      // Update the products state after successful deletion
+      setProducts(products.filter((product) => product.id !== id));
+      } catch (error) {
+        console.error("Error deleting product:", error);
+    }
+  };
+  
   const onDeleteClick = (productId) => {
-    const confirm = window.confirm(
-      "Are You Sure You Want To Delete This Product ?"
-    );
+    const confirm = window.confirm("Are You Sure You Want To Delete This Product?");
     if (!confirm) return;
-
-    const updatedProducts = products.filter(
-      (product) => product.id !== productId
-    );
-    setProducts(updatedProducts);
-    localStorage.setItem("products", JSON.stringify(updatedProducts));
-
     deleteProduct(productId);
   };
+
+  
 
   if (loading) {
     return <Spinners loading={loading} />;
@@ -342,7 +375,7 @@ const ProductsPage = ({ deleteProduct }) => {
                     Edit
                   </button>
                   <button
-                    onClick={() => onDeleteClick(product.id)}
+                    onClick={ () => onDeleteClick(product.documentId)}
                     className="btn btn-danger btn-sm mx-1">
                     Delete
                   </button>
