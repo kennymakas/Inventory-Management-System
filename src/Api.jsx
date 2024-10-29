@@ -1,6 +1,9 @@
 import axios from "axios"
 
-const API_URL = 'https://inventorymanagement-systemwithstrapi.onrender.com/'
+
+const API_URL = 'https://inventorymanagement-systemwithstrapi.onrender.com'
+
+
 
 //register a new user
 

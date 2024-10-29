@@ -11,7 +11,7 @@ import LandingPage from "./pages/LandingPage";
 import NotFoundPage from "./pages/products/NotFoundPage";
 import UserLogin from "./components/UserLogin";
 import UserRegistration from "./components/UserRegistration";
-import { useState } from "react";
+// import { useState } from "react";
 import ContactPage from "./pages/ContactPage";
 import ProductList from "./pages/products/ProductList";
 import AdminDashboard from "./components/AdminDashboard";
@@ -74,6 +74,9 @@ const App = () => {
     
   };
 
+// Add New Product
+const App = () => {
+
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<MainLayout />}>
@@ -86,16 +89,10 @@ const App = () => {
         <Route index element={<LandingPage />} />
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/contact" element={<ContactPage />} />
-       
         <Route
           path="/products"
           element={
-            <ProductsPage
-              addProductSubmit={addProduct}
-              deleteProduct={deleteProduct}
-              // setProductImage={setProductImage}
-              // productImage={productImage}
-            />
+            <ProductsPage/>
           }
         />
       </Route>
