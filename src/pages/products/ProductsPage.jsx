@@ -6,6 +6,7 @@ import Spinners from "../../components/Spinners";
 
 
 
+const ProductsPage = (hhdhhe) => {
 const ProductsPage = () => {
   // const navigate = useNavigate();
   const [products, setProducts] = useState([]);
@@ -155,7 +156,24 @@ const ProductsPage = () => {
     deleteProduct(productId);
   };
 
-  
+  const deleteProduct = async(id) =>{
+    try {
+      
+      const response = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/${id}`,{
+        method:"Delete"
+      });
+      
+      if(response.ok){
+        setProducts(products.filter((product)=>product.id !== id))
+        alert("product deleted successfully")
+      }else{
+        console.error("failed to delete product", response.statusText)
+      }
+    } catch (error) {
+      console.error("Error deleting the product:", error)
+      
+    }
+  }
 
   if (loading) {
     return <Spinners loading={loading} />;
@@ -260,12 +278,7 @@ const ProductsPage = () => {
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
               />
-              {quantity < 10 && (
-                <small className="text-danger">Understocked</small>
-              )}
-              {quantity > 50 && (
-                <small className="text-success">Overstocked</small>
-              )}
+            
             </div>
 
             <div className="mb-3">
@@ -298,45 +311,7 @@ const ProductsPage = () => {
           </form>
         </div>
 
-        <div className="col-md-6">
-          <img
-            src={inventWoman}
-            className="img-fluid rounded-md shadow-lg w-100"
-            alt="Product Creation Image"
-          />
-          <h2 className="fw-bold fs-2 text-primary mt-2">
-            Inventory Management: Create, Edit, and Delete
-          </h2>
-          <p>
-            Inventory Management is a crucial aspect of any business, ensuring
-            that products{Text}
-          </p>
-          <button
-            onClick={() => setShowFullText((prevState) => !prevState)}
-            type="button"
-            className="btn btn-outline-primary my-2 p-2 w-100"
-          >
-            {showFullText ? "Less" : "More"}
-          </button>
-          <ul className="list-group list-group-flush lh-lg">
-            <li className="list-group-item">
-              <i className="fas fa-square text-primary"></i>{" "}
-              <strong>Creating Inventory Items:</strong> Users can easily create
-              new inventory items by providing essential details such as item
-              name, description, quantity, and price.
-            </li>
-            <li className="list-group-item">
-              <i className="fas fa-square text-primary"></i>{" "}
-              <strong>Editing & Deleting Inventory Items:</strong> Modify Item
-              Details: Users can update information such as price, quantity, or
-              description whenever changes occur. Also Users can delete obsolete
-              or discontinued items from the inventory.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <hr />
+       </div>
 
       <table className="table my-3">
         <thead>
