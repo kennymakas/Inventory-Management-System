@@ -6,7 +6,7 @@ const MainLayout = () => {
     <>
         <NavigationBar/>
         <Outlet />
-        <Footer />
+        {/* <Footer /> */}
     </>
     
   )

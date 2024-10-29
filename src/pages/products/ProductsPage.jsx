@@ -4,7 +4,7 @@ import inventWoman from "/src/assets/images/inventWoman.jpg";
 import Spinners from "../../components/Spinners";
 
 
-const ProductsPage = ({ deleteProduct }) => {
+const ProductsPage = (hhdhhe) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingProduct, setEditingProduct] = useState(null);
@@ -123,6 +123,26 @@ const ProductsPage = ({ deleteProduct }) => {
     deleteProduct(productId);
   };
 
+
+  const deleteProduct = async(id) =>{
+    try {
+      
+      const response = await fetch(`https://inventorymanagement-systemwithstrapi.onrender.com/api/products/${id}`,{
+        method:"Delete"
+      });
+      
+      if(response.ok){
+        setProducts(products.filter((product)=>product.id !== id))
+        alert("product deleted successfully")
+      }else{
+        console.error("failed to delete product", response.statusText)
+      }
+    } catch (error) {
+      console.error("Error deleting the product:", error)
+      
+    }
+  }
+
   if (loading) {
     return <Spinners loading={loading} />;
   }
@@ -226,12 +246,7 @@ const ProductsPage = ({ deleteProduct }) => {
                 value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
               />
-              {quantity < 10 && (
-                <small className="text-danger">Understocked</small>
-              )}
-              {quantity > 50 && (
-                <small className="text-success">Overstocked</small>
-              )}
+            
             </div>
 
             <div className="mb-3">
@@ -264,97 +279,9 @@ const ProductsPage = ({ deleteProduct }) => {
           </form>
         </div>
 
-        <div className="col-md-6">
-          <img
-            src={inventWoman}
-            className="img-fluid rounded-md shadow-lg w-100"
-            alt="Product Creation Image"
-          />
-          <h2 className="fw-bold fs-2 text-primary mt-2">
-            Inventory Management: Create, Edit, and Delete
-          </h2>
-          <p>
-            Inventory Management is a crucial aspect of any business, ensuring
-            that products{Text}
-          </p>
-          <button
-            onClick={() => setShowFullText((prevState) => !prevState)}
-            type="button"
-            className="btn btn-outline-primary my-2 p-2 w-100"
-          >
-            {showFullText ? "Less" : "More"}
-          </button>
-          <ul className="list-group list-group-flush lh-lg">
-            <li className="list-group-item">
-              <i className="fas fa-square text-primary"></i>{" "}
-              <strong>Creating Inventory Items:</strong> Users can easily create
-              new inventory items by providing essential details such as item
-              name, description, quantity, and price.
-            </li>
-            <li className="list-group-item">
-              <i className="fas fa-square text-primary"></i>{" "}
-              <strong>Editing & Deleting Inventory Items:</strong> Modify Item
-              Details: Users can update information such as price, quantity, or
-              description whenever changes occur. Also Users can delete obsolete
-              or discontinued items from the inventory.
-            </li>
-          </ul>
-        </div>
-      </div>
+       </div>
 
-      <hr />
-
-      <table className="table my-3">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Product Name</th>
-            <th>Brand</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {products.length > 0 ? (
-            products.map((product, index) => (
-              <tr key={index}>
-                <td>{product.id}</td>
-                <td>{product.name}</td>
-                <td>{product.brand}</td>
-                <td>{product.category}</td>
-                <td>{product.price}</td>
-                <td>
-                  {product.quantity}
-                  {product.quantity < 10 && (
-                    <small className="text-danger d-block">Understocked</small>
-                  )}
-                  {product.quantity > 50 && (
-                    <small className="text-success d-block">Overstocked</small>
-                  )}
-                </td>
-                <td style={{ width:"10px", whiteSpace: "nowrap"}}>
-                  <button
-                    onClick={() => handleEdit(product)}
-                    className="btn btn-primary btn-sm">
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => onDeleteClick(product.id)}
-                    className="btn btn-danger btn-sm mx-1">
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
-          ) : (
-            <tr>
-              <td colSpan="7">No Products Found</td>
-            </tr>
-          )}
-        </tbody>
-      </table>
+      
     </div>
   );
 };

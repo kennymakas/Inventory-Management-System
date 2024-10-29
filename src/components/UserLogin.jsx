@@ -19,7 +19,7 @@ const UserLogin = () => {
 
             console.log("user logged in successfully", response)
             // localStorage.setItem('token', response.jwt)
-            navigate("/dashboard")
+            navigate("/admin")
 
             
         } catch (error) {
