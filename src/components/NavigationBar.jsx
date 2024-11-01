@@ -31,7 +31,7 @@ const NavigationBar = () => {
                     <li className="nav-item">
                     <Link className="nav-link btn btn-dark" aria-current="page" to="/login">
                         <span className="text-white fw-bold text-decoration-underline">
-                        Login <i className="fas fa-sign-in-alt text-warning"></i>
+                        <i className="fas fa-sign-in-alt text-warning"></i>
                         </span>
                     </Link>
                     </li>
