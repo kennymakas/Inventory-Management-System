@@ -5,13 +5,15 @@ import { useState } from "react";
 const NavigationBar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false); 
+    const [user, setUser] = useState({ initials: '' }); 
 
     const toggleNavbar = () => {
         setIsOpen(!isOpen);
     };
 
     const handleLogin = () => {
-        setIsLoggedIn(true); 
+        setIsLoggedIn(true);
+        setUser({ initials: 'Username' }); // Replace 'username' with code that calls users name
     };
 
     return (
@@ -36,8 +38,8 @@ const NavigationBar = () => {
                     <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNavDropdown">
                         <ul className="navbar-nav ms-auto my-2 mb-lg-0">
                             <li className="nav-item">
-                                
-                                {!isLoggedIn && (
+                                {/* Conditionally render either login link or user initials */}
+                                {!isLoggedIn ? (
                                     <Link 
                                         className="nav-link btn btn-dark" 
                                         aria-current="page" 
@@ -48,6 +50,10 @@ const NavigationBar = () => {
                                             Login <i className="fas fa-sign-in-alt text-warning"></i>
                                         </span>
                                     </Link>
+                                ) : (
+                                    <span className="nav-link text-white fw-bold">
+                                        {user.initials} {/* Display user initials/name/username */}
+                                    </span>
                                 )}
                             </li>
                         </ul>
@@ -57,5 +63,4 @@ const NavigationBar = () => {
         </>
     );
 }
-
 export default NavigationBar;
